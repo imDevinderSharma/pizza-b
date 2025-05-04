@@ -81,12 +81,9 @@ const pizzaData = [
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/pizzahost')
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => {
-    console.error('MongoDB Connection Error:', err);
-    process.exit(1);
-  });
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/pizzahost')
+  .then(() => console.log('MongoDB Connected for seeding'))
+  .catch(err => console.log('MongoDB Connection Error during seeding:', err));
 
 // Seed function
 const seedDatabase = async () => {

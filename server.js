@@ -9,6 +9,11 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
+// Base URL for API (production vs development)
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? 'https://pizzahost-backend.vercel.app/api'
+  : `http://localhost:${process.env.PORT || 3000}/api`;
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -49,7 +54,7 @@ const PORT = process.env.PORT || 3000;
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`API base URL: http://localhost:${PORT}/api`);
+    console.log(`API base URL: ${API_BASE_URL}`);
   });
 }
 

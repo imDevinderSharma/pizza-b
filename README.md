@@ -2,6 +2,10 @@
 
 This is the backend server for the Pizza Host application, providing API endpoints for pizza ordering and menu management.
 
+## Deployment
+
+The API is deployed and accessible at: https://pizzahost-backend.vercel.app/
+
 ## Features
 
 - RESTful API for pizza menu management
@@ -43,6 +47,8 @@ npm run dev
 ```
 
 ## API Endpoints
+
+All endpoints are available at the base URL: https://pizzahost-backend.vercel.app/api
 
 - `GET /api/menu` - Get all menu items
 - `POST /api/orders` - Create a new order

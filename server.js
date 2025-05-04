@@ -42,11 +42,16 @@ mongoose
 
 console.log('Running without MongoDB connection for now');
 
-// Use port 3000 to avoid conflicts
-const PORT = 3000;
+// Use environment port or default to 3000
+const PORT = process.env.PORT || 3000;
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`API base URL: http://localhost:${PORT}/api`);
-}); 
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`API base URL: http://localhost:${PORT}/api`);
+  });
+}
+
+// Export the Express app for Vercel
+module.exports = app; 

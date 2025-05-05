@@ -14,8 +14,15 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
   ? 'https://pizzahost-backend.vercel.app/api'
   : `http://localhost:${process.env.PORT || 3000}/api`;
 
+// CORS configuration
+const corsOptions = {
+  origin: ['https://pizza-f.vercel.app', 'http://localhost:5173', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+};
+
 // Middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Add request logging middleware
